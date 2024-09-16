@@ -1,0 +1,60 @@
+{
+  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.58\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU08",
+            "path": "BaseThemes/CY24SU08.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "410e31f201bbc00e27da",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"3ea5d10c0eaee246db88\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.655567117585848,\"y\":227.76274713839751,\"z\":1001,\"width\":1037.585848074922,\"height\":412.90322580645164,\"tabOrder\":1001}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Demand_Forecast_New_1.Actual_Value\"},{\"queryRef\":\"Demand_Forecast_New_1.Forecasted_Value\"}],\"Category\":[{\"queryRef\":\"Demand_Forecast_New_1.Date\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Demand_Forecast_New_1\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Actual_Value\"},\"Name\":\"Demand_Forecast_New_1.Actual_Value\",\"NativeReferenceName\":\"Actual_Value\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Forecasted_Value\"},\"Name\":\"Demand_Forecast_New_1.Forecasted_Value\",\"NativeReferenceName\":\"Forecasted_Value\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"Demand_Forecast_New_1.Date\",\"NativeReferenceName\":\"Date\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 412.90,
+          "width": 1037.59,
+          "x": 10.66,
+          "y": 227.76,
+          "z": 1001.00
+        },
+        {
+          "config": "{\"name\":\"8b9264ba6589b8dbe3b9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":411.5712799167534,\"y\":0,\"z\":1000,\"width\":456.8574401664933,\"height\":122.53902185223725,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Demand_Forecast_New_1.Category\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Demand_Forecast_New_1\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Category\"},\"Name\":\"Demand_Forecast_New_1.Category\",\"NativeReferenceName\":\"Category\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 122.54,
+          "width": 456.86,
+          "x": 411.57,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"bb5f37001edd6da47795\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.655567117585848,\"y\":0,\"z\":0,\"width\":456.8574401664933,\"height\":175.8168574401665,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Demand_Forecast_New_1.MAPE_Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Demand_Forecast_New_1\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MAPE_Value\"},\"Name\":\"Demand_Forecast_New_1.MAPE_Value\",\"NativeReferenceName\":\"MAPE_Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MAPE_Value\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 175.82,
+          "width": 456.86,
+          "x": 10.66,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

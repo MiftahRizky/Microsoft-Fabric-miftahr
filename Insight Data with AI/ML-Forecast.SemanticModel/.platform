@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ML-Forecast"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4ac0ea60-9974-4fd1-842f-73c55d02a849"
+  }
+}

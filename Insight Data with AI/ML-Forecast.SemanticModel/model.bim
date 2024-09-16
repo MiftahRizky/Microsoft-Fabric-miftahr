@@ -1,0 +1,227 @@
+{
+  "compatibilityLevel": 1604,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.134.7420.2 (Main)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DatabaseQuery\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"WebModelingEdit\"]"
+      }
+    ],
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "False"
+          }
+        ],
+        "expression": [
+          "let",
+          "    database = Sql.Database(\"NEVFLWB5MEOUDBOSWRS4ZSN4WA-YDJAAC7PWDRUXE7JWRWPGX4WEQ.datawarehouse.fabric.microsoft.com\", \"db0a21f4-b243-44ac-a393-52074e112e6f\")",
+          "in",
+          "    database"
+        ],
+        "kind": "m",
+        "lineageTag": "bd9126c6-e3b8-4cf5-9d21-9f508632d7c8"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Demand_Forecast_New_1",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "84a9d89b-e6a6-4243-a61f-fb2c479478d6",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "Date",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Actual_Sales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "c37b4be9-422d-48ef-81f8-0a528fc95a7d",
+            "sourceColumn": "Actual_Sales",
+            "sourceLineageTag": "Actual_Sales",
+            "sourceProviderType": "float",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f270c2fa-2f2d-44bd-8f86-fef30446dab2",
+            "sourceColumn": "Category",
+            "sourceLineageTag": "Category",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MAPE",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4aa83acd-4202-47a7-b971-fcdbcc4ba068",
+            "sourceColumn": "MAPE",
+            "sourceLineageTag": "MAPE",
+            "sourceProviderType": "float",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Forecasted_Sales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "448de51b-b578-4dfb-b788-d3cfadfb4b5a",
+            "sourceColumn": "Forecasted_Sales",
+            "sourceLineageTag": "Forecasted_Sales",
+            "sourceProviderType": "float",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "d88ec79e-8a2f-4f9d-b468-8ad1e355c82a",
+        "measures": [
+          {
+            "name": "MAPE_Value",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "expression": "AVERAGE(Demand_Forecast_New_1[MAPE])",
+            "lineageTag": "9dd8b188-a354-40b0-8e07-52f75f135318"
+          },
+          {
+            "name": "Forecasted_Value",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "expression": "AVERAGE (Demand_Forecast_New_1[Forecasted_Sales])",
+            "lineageTag": "161f25d3-03d4-49e9-bd82-f0d733e24f08"
+          },
+          {
+            "name": "Actual_Value",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "expression": "AVERAGE (Demand_Forecast_New_1[Actual_Sales])",
+            "lineageTag": "23dd0f26-2c30-4926-bf82-e0ebe3214858"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Demand_Forecast_New_1",
+            "mode": "directLake",
+            "source": {
+              "entityName": "Demand_Forecast_New_1",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[Demand_Forecast_New_1]"
+      }
+    ]
+  }
+}

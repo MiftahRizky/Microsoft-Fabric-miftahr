@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "AIsample - Superstore Forecast",
+    "displayName": "2-explore-cleanse-data(1)",
     "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "02bc02bf-5ddf-42e0-927b-e738b1bff7a8"
+    "logicalId": "ffda13a2-726a-4e41-986a-154684745620"
   }
 }

@@ -5,13 +5,6 @@
 # META {
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
-# META   },
-# META   "dependencies": {
-# META     "lakehouse": {
-# META       "default_lakehouse": "8229f8b5-5edb-4da9-a6ff-eeb18bae1e88",
-# META       "default_lakehouse_name": "FabricData_Sciencelakehouse09",
-# META       "default_lakehouse_workspace_id": "0b00d2c0-b0ef-4be3-93e9-b46cf35f9624"
-# META     }
 # META   }
 # META }
 
@@ -45,13 +38,6 @@
 # Install imblearn for SMOTE using pip
 %pip install imblearn
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # > [!TIP]
@@ -72,13 +58,6 @@ import pandas as pd
 SEED = 12345
 df_clean = spark.read.format("delta").load("Tables/df_clean").toPandas()
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # ### Generate experiment for tracking and logging the model using MLflow
@@ -90,13 +69,6 @@ df_clean = spark.read.format("delta").load("Tables/df_clean").toPandas()
 import mlflow
 # Setup experiment name
 EXPERIMENT_NAME = "bank-churn-experiment"  # MLflow experiment name
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -113,13 +85,6 @@ EXPERIMENT_NAME = "bank-churn-experiment"  # MLflow experiment name
 mlflow.set_experiment(EXPERIMENT_NAME)
 mlflow.autolog(exclusive=False)
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # ## Import scikit-learn and LightGBM
@@ -133,13 +98,6 @@ from sklearn.model_selection import train_test_split
 from lightgbm import LGBMClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, precision_score, confusion_matrix, recall_score, roc_auc_score, classification_report
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -158,13 +116,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random
 X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=SEED)
 
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # ### Save test data to a delta table
@@ -178,13 +129,6 @@ table_name = "df_test"
 df_test=spark.createDataFrame(X_test)
 df_test.write.mode("overwrite").format("delta").save(f"Tables/{table_name}")
 print(f"Spark test DataFrame saved to delta table: {table_name}")
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -205,13 +149,6 @@ from imblearn.over_sampling import SMOTE
 sm = SMOTE(random_state=SEED)
 X_res, y_res = sm.fit_resample(X_train, y_train)
 new_train = pd.concat([X_res, y_res], axis=1)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -236,13 +173,6 @@ with mlflow.start_run(run_name="rfc1_sm") as run:
     cm_rfc1_sm = confusion_matrix(y_val, y_pred)
     roc_auc_rfc1_sm = roc_auc_score(y_res, rfc1_sm.predict_proba(X_res)[:, 1])
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # * Train the model using Random Forest with maximum depth of 8 and 6 features
@@ -261,13 +191,6 @@ with mlflow.start_run(run_name="rfc2_sm") as run:
     cr_rfc2_sm = classification_report(y_val, y_pred)
     cm_rfc2_sm = confusion_matrix(y_val, y_pred)
     roc_auc_rfc2_sm = roc_auc_score(y_res, rfc2_sm.predict_proba(X_res)[:, 1])
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -294,13 +217,6 @@ with mlflow.start_run(run_name="lgbm_sm") as run:
     cr_lgbm_sm = classification_report(y_val, y_pred)
     cm_lgbm_sm = confusion_matrix(y_val, y_pred)
     roc_auc_lgbm_sm = roc_auc_score(y_res, lgbm_sm_model.predict_proba(X_res)[:, 1])
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -334,13 +250,6 @@ ypred_rfc1_sm_v1 = load_model_rfc1_sm.predict(X_val) # Random Forest with max de
 ypred_rfc2_sm_v1 = load_model_rfc2_sm.predict(X_val) # Random Forest with max depth of 8 and 6 features
 ypred_lgbm1_sm_v1 = load_model_lgbm1_sm.predict(X_val) # LightGBM
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # - Directly assess the performance of the trained machine learning models on the validation dataset.
@@ -350,13 +259,6 @@ ypred_lgbm1_sm_v1 = load_model_lgbm1_sm.predict(X_val) # LightGBM
 ypred_rfc1_sm_v2 = rfc1_sm.predict(X_val) # Random Forest with max depth of 4 and 4 features
 ypred_rfc2_sm_v2 = rfc2_sm.predict(X_val) # Random Forest with max depth of 8 and 6 features
 ypred_lgbm1_sm_v2 = lgbm_sm_model.predict(X_val) # LightGBM
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -405,13 +307,6 @@ def plot_confusion_matrix(cm, classes,
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # * Confusion Matrix for Random Forest Classifier with maximum depth of 4 and 4 features
@@ -422,13 +317,6 @@ cfm = confusion_matrix(y_val, y_pred=ypred_rfc1_sm_v1)
 plot_confusion_matrix(cfm, classes=['Non Churn','Churn'],
                       title='Random Forest with max depth of 4')
 tn, fp, fn, tp = cfm.ravel()
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 
@@ -441,13 +329,6 @@ plot_confusion_matrix(cfm, classes=['Non Churn','Churn'],
                       title='Random Forest with max depth of 8')
 tn, fp, fn, tp = cfm.ravel()
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
 # MARKDOWN ********************
 
 # * Confusion Matrix for LightGBM
@@ -458,13 +339,6 @@ cfm = confusion_matrix(y_val, y_pred=ypred_lgbm1_sm_v1)
 plot_confusion_matrix(cfm, classes=['Non Churn','Churn'],
                       title='LightGBM')
 tn, fp, fn, tp = cfm.ravel()
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
 # MARKDOWN ********************
 

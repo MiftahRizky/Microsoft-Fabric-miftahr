@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "1-ingest-data",
+    "displayName": "4-predict(1)",
     "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "2f050eed-020b-4843-b85f-88dc97780a74"
+    "logicalId": "b893ccea-87b9-467c-8a0f-f4e5d5f15b9a"
   }
 }

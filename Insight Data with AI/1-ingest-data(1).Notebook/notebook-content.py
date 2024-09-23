@@ -8,8 +8,8 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "8229f8b5-5edb-4da9-a6ff-eeb18bae1e88",
-# META       "default_lakehouse_name": "FabricData_Sciencelakehouse09",
+# META       "default_lakehouse": "f5b3c014-3d95-4ccb-a44c-b4ad08def4e2",
+# META       "default_lakehouse_name": "FabricData_Sciencelakehouse",
 # META       "default_lakehouse_workspace_id": "0b00d2c0-b0ef-4be3-93e9-b46cf35f9624"
 # META     }
 # META   }
@@ -38,29 +38,29 @@
 # MARKDOWN ********************
 
 # 
-# The dataset contains churn status of 10,000 customers. It also includes attributes that could impact churn such as:
-# 
-# * Credit score
-# * Geographical location (Germany, France, Spain)
-# * Gender (male, female)
-# * Age
-# * Tenure (years of being bank's customer)
-# * Account balance
-# * Estimated salary
-# * Number of products that a customer has purchased through the bank
-# * Credit card status (whether a customer has a credit card or not)
-# * Active member status (whether an active bank's customer or not)
-# 
-# The dataset also includes columns such as row number, customer ID, and customer surname that should have no impact on customer's decision to leave the bank. 
-# 
-# The event that defines the customer's churn is the closing of the customer's bank account. The column `exited` in the dataset refers to customer's abandonment. There isn't much context available about these attributes so you have to proceed without having background information about the dataset. The aim is to understand how these attributes contribute to the `exited` status.
-# 
-# Example rows from the dataset:
-# 
-# |"CustomerID"|"Surname"|"CreditScore"|"Geography"|"Gender"|"Age"|"Tenure"|"Balance"|"NumOfProducts"|"HasCrCard"|"IsActiveMember"|"EstimatedSalary"|"Exited"|
-# |---|---|---|---|---|---|---|---|---|---|---|---|---|
-# |15634602|Hargrave|619|France|Female|42|2|0.00|1|1|1|101348.88|1|
-# |15647311|Hill|608|Spain|Female|41|1|83807.86|1|0|1|112542.58|0|
+The dataset contains churn status of 10,000 customers. It also includes attributes that could impact churn such as:
+
+* Credit score
+* Geographical location (Germany, France, Spain)
+* Gender (male, female)
+* Age
+* Tenure (years of being bank's customer)
+* Account balance
+* Estimated salary
+* Number of products that a customer has purchased through the bank
+* Credit card status (whether a customer has a credit card or not)
+* Active member status (whether an active bank's customer or not)
+
+The dataset also includes columns such as row number, customer ID, and customer surname that should have no impact on customer's decision to leave the bank. 
+
+The event that defines the customer's churn is the closing of the customer's bank account. The column `exited` in the dataset refers to customer's abandonment. There isn't much context available about these attributes so you have to proceed without having background information about the dataset. The aim is to understand how these attributes contribute to the `exited` status.
+
+Example rows from the dataset:
+
+|"CustomerID"|"Surname"|"CreditScore"|"Geography"|"Gender"|"Age"|"Tenure"|"Balance"|"NumOfProducts"|"HasCrCard"|"IsActiveMember"|"EstimatedSalary"|"Exited"|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|15634602|Hargrave|619|France|Female|42|2|0.00|1|1|1|101348.88|1|
+|15647311|Hill|608|Spain|Female|41|1|83807.86|1|0|1|112542.58|0|
 
 # MARKDOWN ********************
 

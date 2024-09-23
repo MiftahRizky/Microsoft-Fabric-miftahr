@@ -338,6 +338,55 @@
         },
         "name": "Copy_hlr",
         "dependsOn": []
+      },
+      {
+        "type": "Office365Outlook",
+        "typeProperties": {
+          "inputs": {
+            "body": {
+              "To": "iki@miftahr.onmicrosoft.com",
+              "Subject": "@concat('DI in an Hour Pipeline Succeeded with Pipeline Run Id', pipeline().RunId)",
+              "Body": "@concat('RunID = ', pipeline().RunId, ' ; ', 'Copied rows ', activity('Copy_hlr').output.rowsCopied, ' ; ','Throughput ', activity('Copy_hlr').output.throughput)",
+              "Sensitivity": "",
+              "Importance": "Normal"
+            },
+            "method": "post",
+            "path": "/v2/Mail"
+          }
+        },
+        "name": "Office 365 Outlook1",
+        "dependsOn": [
+          {
+            "activity": "Dataflow1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "e4b6b38d-31f2-4e5e-a6c9-d0e72a9a9f72",
+          "workspaceId": "0b00d2c0-b0ef-4be3-93e9-b46cf35f9624",
+          "notifyOption": "NoNotification"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Dataflow1",
+        "dependsOn": [
+          {
+            "activity": "Copy_hlr",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       }
     ]
   }
